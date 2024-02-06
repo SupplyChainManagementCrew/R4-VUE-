@@ -6,10 +6,12 @@ const products = product
 
 <template>
   <div>
-    <h2>Most Sold Product</h2>
-     <li v-for="item in products">
-	    {{ item.name }} - {{ item.sales }} 
-     </li>
+    <h2>Most Sold Products</h2>
+    <ul>
+      <li v-for="item in products">
+        {{ item.name }} - {{ item.sales }}
+      </li>
+    </ul>
   </div>
 </template>
 
