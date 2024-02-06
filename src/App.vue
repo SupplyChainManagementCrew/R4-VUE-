@@ -1,5 +1,5 @@
 <script setup>
-import Most from './components/Most.vue';
+import Child from './components/Most.vue';
 
 import {ref} from 'vue'
 
@@ -15,7 +15,7 @@ jsons();
 
 <template>
   <div>
-    <Most />
+    <Child />
   </div>
 </template>
 
