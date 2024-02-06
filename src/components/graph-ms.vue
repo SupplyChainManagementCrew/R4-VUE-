@@ -1,40 +1,75 @@
 <template> 
-       <li v-for="item in graph">
-        <p>Date: {{ item.date }}</p>
-        <p>Revenue: {{ item.revenue }}</p>
-        <p>Sales Quantity: {{ item.sales_quantity }}</p>
-        <p>Recipient: {{ item.recipient }}</p>
-        <p>{{item}}</p>
-      </li>
+  <div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+  <!-- <div>
+    <li v-for="item in graphData">
+      <p>Date: {{ item.date }}</p>
+      <p>Revenue: {{ item.revenue }}</p>
+      <p>Sales Quantity: {{ item.sales_quantity }}</p>
+    </li>
+  </div> -->
 </template>
 
-
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-// import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import Chart from 'chart.js/auto';
 
-const searchQuery = ref(''); //양방향 검색 담을 그릇
-const graph = ref([]); // json 값 담을 그릇
-// const filteredPosts = ref([]); // 출력 값 담을 그릇
+const graphData = ref([]);
 
 async function fetchData() {
-    graph.value = null
-        const res = await fetch(
-                `https://r1-json-server.fly.dev/graph`
-                )
-        graph.value = await res.json()
+  graphData.value = null;
+  const res = await fetch(`https://r1-json-server.fly.dev/graph`);
+  const jsonData = await res.json();
+  
+  // 날짜별 중복 제거
+  const uniqueDates = [...new Set(jsonData.map(item => item.date))];
+  const aggregatedData = uniqueDates.map(date => {
+    const filteredItems = jsonData.filter(item => item.date === date);
+    const totalRevenue = filteredItems.reduce((acc, curr) => acc + curr.revenue, 0);
+    const totalSalesQuantity = filteredItems.reduce((acc, curr) => acc + curr.sales_quantity, 0);
+    return {
+      date,
+      revenue: totalRevenue,
+      sales_quantity: totalSalesQuantity
+    };
+  });
+  
+  graphData.value = aggregatedData;
 }
 
-// const filterPosts = () => {
-//   if (searchQuery.value) {
-//     filteredPosts.value = posts.value.filter(post => post.recipient_address .includes(searchQuery.value));
-//   } else {
-//     filteredPosts.value = posts.value;
-//   }
-// };
-
 onMounted(() => {
-  fetchData();
+  fetchData().then(() => {
+    createLineGraph();
+  });
 });
 
+function createLineGraph() {
+  const dates = graphData.value.map(item => item.date);
+  const revenues = graphData.value.map(item => item.revenue);
+
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: dates,
+      datasets: [
+        {
+          label: '일별 매출 현황',
+          data: revenues,
+          fill: false,
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2
+        }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
 </script>

@@ -1,8 +1,8 @@
 <script setup>
-import Child from './components/graph-ms.vue'
+import graphMs from './components/graph-ms.vue'
 
 </script>
 
 <template>
-<Child/>
+<graphMs/>
 </template>
