@@ -1,4 +1,5 @@
 <template>
+<table style="border:1px">
     <!-- 날짜를 기준으로 항목들을 그룹화하여 순회 -->
     <div v-for="(group, date) in groupedPosts" :key="date">
       <h3>{{ date }}</h3>
@@ -12,6 +13,7 @@
 		</li>
 	</ul>
 	</div>
+</table>
 </template>
 
 <script setup>
