@@ -1,8 +1,27 @@
-<script setup>
-import graphMs from './components/graph-ms.vue'
+<template>
+  <v-app>
+    <v-main>
+      <Delivery/>
+      <orderinfo/>
+      <Most/>
+      <graphMs/>
+    </v-main>
+  </v-app>
+</template>
 
+<script>
+import Delivery from './components/Delivery.vue'
+import orderinfo  from './components/orderInfo.vue'
+import Most from './components/Most.vue';
+import graphMs from './components/graph-ms.vue'
+export default {
+  name: 'App',
+components: {
+  Delivery,
+  orderinfo,
+  Most,
+  graphMs
+}
+}
 </script>
 
-<template>
-<graphMs/>
-</template>
