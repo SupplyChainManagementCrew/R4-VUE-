@@ -5,6 +5,7 @@
       <orderinfo/>
       <Most/>
       <graphMs/>
+      <Comparison />
     </v-main>
   </v-app>
 </template>
@@ -14,6 +15,7 @@ import Delivery from './components/Delivery.vue'
 import orderinfo  from './components/orderInfo.vue'
 import Most from './components/Most.vue';
 import graphMs from './components/graph-ms.vue'
+import Comparison from './components/Comparison.vue'
 export default {
   name: 'App',
 components: {
@@ -24,4 +26,3 @@ components: {
 }
 }
 </script>
-
