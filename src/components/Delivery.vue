@@ -11,13 +11,11 @@
             <th>배송주소</th>
             <th>받는사람</th>
         </tr>
-    <!-- <tr class="list-group"> -->
     <tr class="list-group-item" v-for="post in filteredPosts">
         <td>{{post.delivery_status}}</td>
         <td>{{ post.recipient_address }}</td>
         <td>{{ post.recipient_name }}</td>
     </tr>
-    <!-- </tr> -->
     </table>
 </template>
 
@@ -45,7 +43,7 @@ async function fetchData() {
 
 const filterPosts = () => {
   if (searchQuery.value) {
-    filteredPosts.value = posts.value.filter(post => post.recipient_name.includes(searchQuery.value));
+    filteredPosts.value = posts.value.filter(post => post.recipient_address.includes(searchQuery.value));
   } else {
     filteredPosts.value = posts.value;
   }
@@ -57,3 +55,4 @@ onMounted(() => {
 
 watch(searchQuery, filterPosts);
 </script>
+
