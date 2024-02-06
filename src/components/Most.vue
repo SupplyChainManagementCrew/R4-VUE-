@@ -1,5 +1,5 @@
 <script setup>
-import product from "@/assets/product.json"
+import product from "@/assets/product.json";
 const products = product
 
 </script>
