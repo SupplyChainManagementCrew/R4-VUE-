@@ -22,7 +22,8 @@ components: {
   Delivery,
   orderinfo,
   Most,
-  graphMs
+  graphMs,
+  Comparison
 }
 }
 </script>
