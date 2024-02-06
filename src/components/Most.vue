@@ -6,6 +6,7 @@
         <p>거래일 : {{ item.TransactionDate }}</p>
         <p>수령인 : {{ item.Recipient }}</p>
         <p>제품명 : {{ item.Item }}</p>
+        <p>주문번호 : {{item.id}}</p>
         <p>수    량 : {{ item.SalesQuantity }}개</p>
         <p>단    가 : {{ item.UnitPrice }}원</p>
         <p>공급가 : {{ calculateTotalValue(item) }}원</p>
