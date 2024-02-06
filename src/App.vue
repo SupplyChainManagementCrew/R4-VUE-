@@ -1,11 +1,9 @@
 <script setup>
-import Child from './components/Most.vue';
-
+import Most from './components/Most.vue';
 </script>
 
 <template>
   <div>
-    <Child />
+    <Most />
   </div>
 </template>
-
