@@ -3,12 +3,12 @@
     <h2>Most Sold Product</h2>
     <ul>
        <li v-for="item in sortedDb" :key="item.id">
-        <p>Transaction Date : {{ item.TransactionDate }}</p>
-        <p>Recipient : {{ item.Recipient }}</p>
-        <p>Item : {{ item.Item }}</p>
-        <p>Sales Quantity : {{ item.SalesQuantity }}</p>
-        <p>Unit Price (KRW) : {{ item.UnitPrice }}</p>
-        <p>Total Value : {{ calculateTotalValue(item) }}원</p>
+        <p>거래일 : {{ item.TransactionDate }}</p>
+        <p>수령인 : {{ item.Recipient }}</p>
+        <p>제품명 : {{ item.Item }}</p>
+        <p>수    량 : {{ item.SalesQuantity }}개</p>
+        <p>단    가 : {{ item.UnitPrice }}원</p>
+        <p>공급가 : {{ calculateTotalValue(item) }}원</p>
       </li>
     </ul>
   </div>
