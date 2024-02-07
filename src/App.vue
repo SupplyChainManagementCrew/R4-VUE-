@@ -1,14 +1,45 @@
 <template>
-  <v-app>
-    <v-main>
-      <Delivery/>
-      <orderinfo/>
-      <Most/>
-      <graphMs/>
-      <Comparison />
-    </v-main>
-  </v-app>
+  <v-container class="custom-background">
+    <v-row no-gutters>
+      <v-col>
+        <v-sheet class="pa-2 ma-2">
+          <graphMs />
+        </v-sheet>
+      </v-col>
+      <v-col>
+        <v-sheet class="pa-2 ma-2">
+         <Most/>
+        </v-sheet>
+      </v-col>
+            <v-col>
+        <v-sheet class="pa-2 ma-2">
+           <Comparison/>
+        </v-sheet>
+      </v-col>
+
+      <v-responsive width="100%"></v-responsive>
+
+      <v-col>
+        <v-sheet class="pa-2 ma-2">
+          <orderinfo/>
+        </v-sheet>
+      </v-col>
+
+      <v-col>
+        <v-sheet class="pa-2 ma-2">
+          <Delivery/>
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
+
+<style>
+.custom-background {
+  background-color: #ffffff; /* Replace with your desired background color */
+}
+</style>
+
 
 <script>
 import Delivery from './components/Delivery.vue'
@@ -18,12 +49,12 @@ import graphMs from './components/graph-ms.vue'
 import Comparison from './components/Comparison.vue'
 export default {
   name: 'App',
-components: {
-  Delivery,
-  orderinfo,
-  Most,
-  graphMs,
-  Comparison
-}
+  components: {
+    Delivery,
+    orderinfo,
+    Most,
+    graphMs,
+    Comparison
+  }
 }
 </script>
